@@ -1,0 +1,39 @@
+<div class="navbar">
+    {% if page == 'my_list' %}
+        <button class="navbar-button" onclick="location.href='{% url 'home' %}'">
+            Home
+        </button>
+    {% elif page == 'list_details' %}
+        <button class="navbar-button" onclick="location.href='{% url 'list-view' %}'">
+            Back to lists
+        </button>
+        <button class="navbar-button" onclick="window.location.href='{% url 'edit-list' list_id=to_do_list.id %}'">
+            Edit list
+        </button>
+    {% elif page == 'list_view' %}
+        <button class="navbar-button" onclick="location.href='{% url 'create-list' %}'">
+            Create List
+        </button>
+        <button class="navbar-button" onclick="location.href='{% url 'home' %}'">
+            Home
+        </button>
+    {% elif request.user.is_authenticated %}
+        <button class="navbar-button" onclick="location.href='{% url 'logout' %}'">
+            Log out
+        </button>
+        <button class="navbar-button" onclick="location.href='{% url 'create-list' %}'">
+            Create List
+        </button>
+        <button class="navbar-button" onclick="location.href='{% url 'list-view' %}'">
+            My Lists
+        </button>
+
+    {% else %}
+        <button class="navbar-button" onclick="location.href='{% url 'login' %}'">
+            Login
+        </button>
+        <button class="navbar-button" onclick="location.href='{% url 'register' %}'">
+            Register
+        </button>
+    {% endif %}
+</div>

@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="to-do-list-container">
+    <h2>Your To-Do Lists</h2>
+    <div class="list-container">
+        {% for list in user_lists %}
+            <div>
+                <h4><a href="{% url 'list-details' pk=list.id %}">{{ list.list_name }}</a></h4>
+            </div>
+        {% endfor %}
+     </div>
+</div>
+
+{% endblock content %}

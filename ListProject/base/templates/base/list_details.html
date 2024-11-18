@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="list-detail-container">
+    <h2>{{ to_do_list.list_name }}</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                <form method="POST" action="{% url 'update_item' pk=item.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="checkbox" name="completed" {% if item.completed %}checked{% endif %}
+                           onchange="this.form.submit()">
+                </form>
+                {{ item.description }}
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock content %}
+
+
+

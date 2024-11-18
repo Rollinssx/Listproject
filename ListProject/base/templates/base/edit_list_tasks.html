@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+<!-- base/edit_list_and_items.html -->
+    <div class="edit-list-container">
+        <h2>Edit To-Do List</h2>
+        <form method="POST" class="edit-list-form">
+        {% csrf_token %}
+
+        <h3>List Title</h3>
+        {{ list_form.as_p }}
+
+        <h3>Items</h3>
+        <ul>
+            {% for form in item_formset %}
+                <li>
+                    {{ form.as_p }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit" class="navbar-button">Save Changes</button>
+    </form>
+    <button type="submit" class="navbar-button" onclick="location.href='{% url 'add-items' pk=to_do_list.id %}'">Add items</button>
+    </div>
+{% endblock content %}
+

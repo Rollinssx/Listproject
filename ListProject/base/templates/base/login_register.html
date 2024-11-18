@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    {% if page == 'login' %}
+        <div class="outer-authentication-container">
+                <div class="authenticate-container">
+                    <div class="login-header">
+                        {% if messages %}
+                            <p>{{ message }}</p>
+                        {% endif %}
+                        <h1>Login</h1>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="label-container">
+                            <label for="id_username">Email</label>
+                        </div>
+                        {{ form.username }}
+                        <div class="label-container">
+                            <label for="id_password">Password</label>
+                        </div>
+                        {{ form.password }}
+                        <div class="button-container">
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    {% elif page == 'register' %}
+        <div class="outer-authenticate-container">
+            <div class="register-container">
+                    <h1>Register</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="label-container">
+                             <label for="id_first_name">First Name</label>
+                        </div>
+                        {{ form.first_name }}
+                        <div class="label-container">
+                            <label for="id_last_name">Last Name</label>
+                        </div>
+                        {{ form.last_name }}
+                        <div class="label-container">
+                            <label for="id_username">Username</label>
+                        </div>
+                        {{ form.username }}
+                        <div class="label-container">
+                            <label for="id_password1">Password</label>
+                        </div>
+                        {{ form.password1 }}
+                        <div class="label-container">
+                            <label for="id_email">Email</label>
+                        </div>
+                        {{ form.email }}
+                        <div class="label-container">
+                            <label for="id_password2">Confirm Password</label>
+                        </div>
+                        {{ form.password2 }}
+                        <div class="button-container">
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    {% endif %}
+{% endblock content %}
